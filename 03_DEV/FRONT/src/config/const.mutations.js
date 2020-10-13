@@ -1,0 +1,2 @@
+export const SET_MOUSE_POSITION = 'SET_MOUSE_POSITION'
+export const SET_SCROLL_TOP = 'SET_SCROLL_TOP'

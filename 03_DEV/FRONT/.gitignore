@@ -1,0 +1,8 @@
+/vendor
+# /.env
+/.env.staging
+# /.env.production
+npm-debug.log
+yarn-error.log
+dist
+node_modules

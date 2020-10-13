@@ -1,0 +1,72 @@
+{
+  "name": "traveler",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --mode local",
+    "build": "vue-cli-service build --mode staging",
+    "lint": "vue-cli-service lint",
+    "staging": "vue-cli-service build --mode production",
+    "production": "vue-cli-service build --mode production"
+  },
+  "dependencies": {
+    "@amcharts/amcharts4": "^4.10.7",
+    "@amcharts/amcharts4-geodata": "^4.1.17",
+    "apollo-boost": "^0.4.9",
+    "axios": "^0.20.0",
+    "axios-extensions": "^3.1.3",
+    "core-js": "^3.6.5",
+    "fastclick": "^1.0.6",
+    "graphql": "^15.3.0",
+    "gsap": "^2.1.3",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-webpack-plugin": "^2.4.2",
+    "json-loader": "^0.5.7",
+    "nib": "^1.1.2",
+    "postcss-js": "^3.0.0",
+    "prerender-spa-plugin": "^3.4.0",
+    "raf": "^3.4.1",
+    "stylus-easing": "^1.0.0",
+    "swiper": "^6.3.3",
+    "tiny-emitter": "^2.1.0",
+    "vh-check": "^2.0.5",
+    "vue": "^2.6.12",
+    "vue-apollo": "^3.0.4",
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-head": "^2.2.0",
+    "vue-i18n": "^8.21.1",
+    "vue-perfect-scrollbar": "^0.2.1",
+    "vue-router": "^3.4.3",
+    "vuex": "^3.5.1"
+  },
+  "devDependencies": {
+    "@prerenderer/renderer-jsdom": "^0.2.0",
+    "@vue/cli-plugin-babel": "^4.5.6",
+    "@vue/cli-plugin-eslint": "^4.5.6",
+    "@vue/cli-service": "^4.5.6",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "lint-staged": "^6.1.1",
+    "nib": "^1.1.2",
+    "postcss-flexibility": "^2.0.0",
+    "stylus": "^0.54.8",
+    "stylus-loader": "^3.0.2",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "gitHooks": {},
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": {
+    "production": [
+      "last 2 versions",
+      "ie 11"
+    ],
+    "local": [
+      "last 2 versions",
+      "ie 11"
+    ]
+  }
+}

@@ -1,0 +1,131 @@
+.fade-enter-active, .fade-leave-active
+  transition opacity 0.6s $ease
+
+.fade-leave-active
+  transition opacity 0.4s $ease
+
+.fade-enter, .fade-leave-to
+  opacity 0
+
+.left-enter-active
+  transition 0.4s 0.1s $ease
+
+.left-leave-active
+  transition 0.2s 0s $ease
+
+.left-enter, .left-leave-to
+  opacity 0
+  transform translateX(-10px)
+
+.blur-enter-active, .blur-leave-active
+  transition 0.3s linear
+
+.blur-leave-active
+  transition opacity 0.3s linear
+
+.blur-enter
+  filter blur(18px)
+  opacity 0
+  transform translate3d(0px, 0px, 0px)
+
+.scale-in-enter-active, .scale-in-leave-active
+  transition opacity 0.4s $ease, transform 0.4s $ease
+
+.scale-in-leave-active
+  transition opacity 0.2s $ease, transform 0.2s $ease
+
+.scale-in-enter, .scale-in-leave-to
+  opacity 0
+  transform scale(1.5)
+  pointer-events none
+
+.map-enter-active, .map-leave-active
+  transition opacity 0.4s 1s $ease, transform 0.4s 1s $ease
+  pointer-events none
+
+.map-leave-active
+  transition 0.2s linear
+  pointer-events none
+
+.map-enter
+  opacity 0
+  transform scale(2)
+  pointer-events none
+
+.map-leave-to
+  opacity 0
+  pointer-events none
+
+.scale-out-enter-active, .scale-out-leave-active
+  transition opacity 0.4s 0.1s $ease, transform 0.4s 0.1s $ease
+
+.scale-out-leave-active
+  transition opacity 0.2s $ease, transform 0.2s $ease
+
+.scale-out-enter, .scale-out-leave-to
+  opacity 0
+  transform scale(0.3)
+
+.title-enter-active, .title-leave-active
+  transition opacity 0.4s $ease, transform 0.4s $ease
+
+.title-enter, .title-leave-to
+  opacity 0
+  transform translateY(30px)
+
+.content-enter-active, .content-leave-active
+  transition opacity 0.4s 0.1s $ease, transform 0.4s 0.1s $ease
+
+.content-enter, .content-leave-to
+  opacity 0
+  transform translateY(30px)
+
+.panel-left-enter-active, .panel-left-leave-active
+  transition transform 0.5s $ease
+
+.panel-left-leave-active
+  transition transform 0.3s $ease
+
+.panel-left-enter, .panel-left-leave-to
+  transform translate3d(-100%, 0%, 0)
+
+.panel-right-enter-active, .panel-right-leave-active
+  transition transform 1s $ease
+
+.panel-right-leave-active
+  transition transform 0.8s 0s $ease!important
+
+.panel-right-enter, .panel-right-leave-to
+  transform translate3d(100%, 0%, 0)
+
+.panel-down-enter-active
+  transition transform 0.6s $ease
+
+.panel-down-leave-active
+  transition transform 0.3s $ease
+
+.panel-down-enter, .panel-down-leave-to
+  transform translate3d(0%, -100%, 0)
+
+.panel-up-enter-active
+  transition transform 0.8s $ease
+
+.panel-up-leave-active
+  transition transform 0.6s $ease
+
+.panel-up-enter, .panel-up-leave-to
+  transform translate3d(0%, 100%, 0)
+
+.counter-enter-active
+  transition all 0.6s $ease
+
+.counter-leave-active
+  transition all 0.2s $ease
+
+.counter-enter
+  transform translate3d(0%, 30%, 0)
+  opacity 0
+
+.counter-leave-to
+  transform translate3d(0%, -30%, 0)
+  opacity 0

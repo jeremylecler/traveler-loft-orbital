@@ -1,0 +1,241 @@
+.Page
+
+  position relative
+  z-index 1
+  min-height 100vh
+  min-height calc(100vh - var(--vh, 0px));
+
+.Section
+
+  position relative
+
+  &_double
+
+    display flex
+    flex-direction row
+    align-items flex-start
+    justify-content: space-between
+
+    @media $medium
+
+      display block
+
+  &_wrapper
+
+    padding 40px 80px
+    box-sizing border-box
+
+    @media $small
+
+      padding 40px 20px
+
+.Panel
+
+  height 100vh
+  height calc(100vh - var(--vh, 0px));
+  background-color white
+  box-shadow: 10px 0 30px 0 rgba(0,0,0,0.10);
+  overflow-y auto
+  -webkit-overflow-scrolling touch
+  position absolute
+  width 55vw
+  top 0px
+
+  @media $small
+
+    width 100vw
+
+  &-left
+
+    left 0px
+
+  &-right
+
+    right 0px
+
+  &_sep
+
+    height 5px
+    border-top 1px solid $grey
+    border-bottom 1px solid $grey
+    box-sizing: border-box
+    width 100%
+    background-color #F9F9F9
+
+  &_wrapper
+
+    padding 170px 80px 40px 80px
+    position relative
+
+    @media $small
+
+      padding 120px 20px 40px 20px
+
+    &-small
+
+      padding-top 40px
+
+  h2
+
+    margin-bottom 15vh!important
+    transition 0.8s $ease
+    font-size 7vw!important
+    line-height 6vw!important
+
+    @media $small
+
+      font-size 12vw!important
+      line-height 11vw!important
+
+  &-sticky
+
+    h2
+
+      margin-bottom 20px!important
+      font-size 30px!important
+      line-height 30px!important
+
+    .Panel
+
+      &_media
+
+        position fixed
+        top -50px
+        width 55vw
+        opacity 0.1
+
+        @media $small
+
+          width 100vw
+
+  &_media
+
+    width 100%
+    position absolute
+    top 0px
+    left 0px
+    height 470px
+    background-size cover
+    background-position center
+    opacity 0.25
+    transition opacity 0.5s $ease, top 0.8s $ease
+
+    &:before
+
+      content ''
+      position absolute
+      height 100%
+      width 100%
+      top 0px
+      left 0px
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.00) 40%, #FFFFFF 80%);
+
+.Cta
+
+  appearance none
+  border-radius 0
+  background: #FFFFFF;
+  color black
+  box-shadow: 0px 3px 10px rgba(0,0,0,0.10);
+  border-radius: 23px;
+  border 0px
+  display table
+  cursor pointer
+  position relative
+
+  &_transparent
+
+    background-color transparent
+    color black
+    border 2px solid rgba(0,0,0,1)
+    transition border-color 0.2s $ease
+
+    &:hover
+
+      border-color rgba(0,0,0,0.25)
+
+  &_circle
+
+    height 80px
+    width 80px
+    border-radius 50%
+    display flex
+    flex-direction column
+    align-items center
+    justify-content center
+
+    @media $small
+
+      height 50px
+      width 50px
+
+    i
+
+      font-size 20px
+      line-height 20px
+      display block
+      transition transform 0.4s $ease
+
+    &:hover
+
+      i
+
+        transform scale(1.5)!important
+
+  &_action
+
+    height 40px
+    width 40px
+    min-height 40px
+    min-width 40px
+    border-radius 50%
+    color white
+    background-color $secondary
+    display flex
+    flex-direction column
+    align-items center
+    justify-content center
+    overflow hidden
+
+    i
+
+      font-size 15px
+      line-height 15px
+      display block
+      transition transform 0.4s $ease
+
+      &:first-child
+
+        position absolute
+        top 50%
+        left 50%
+        transform translate(-280%, -50%)
+
+    &:hover
+
+      i
+
+        transform translateX(280%)
+
+      i:first-child
+
+        transform translate(-50%, -50%)
+
+.Table
+
+  display flex
+  flex-direction row
+  align-items center
+  justify-content: space-between
+  border 1px solid $grey
+  border-radius 10px
+  // max-width 560px
+  background-color white
+
+  @media $large
+
+    display block
+
+  &_col
+
+    padding 20px 20px
