@@ -426,7 +426,7 @@
 
       transform translate3d(22.5vw,0px,0px)!important
 
-      @media $small
+      @media $medium
 
         transform none!important
 

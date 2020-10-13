@@ -88,6 +88,7 @@
     align-items center
     margin-left 10px
     position relative
+    backface-visibility hidden
     transition border-color 0.2s $ease, color 0.2s 0.05s $ease
 
     span
@@ -135,4 +136,22 @@
         top 50%
         left 50%
         transform translate(-215%, -50%)
+
+.safari
+
+  .Cta
+
+    &_content:before
+
+      transform none!important
+      opacity 0
+      transition opacity 0.4s $ease
+
+    &:hover
+
+      .Cta
+
+        &_content:before
+
+          opacity 1!important
 </style>

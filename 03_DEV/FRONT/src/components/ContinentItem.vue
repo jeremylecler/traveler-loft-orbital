@@ -81,7 +81,7 @@
 
       &_media
 
-        transform scale(1.1)
+        transform scale3d(1.1, 1.1, 1)
 
   &_content
 
@@ -127,19 +127,28 @@
     position absolute
     left 0px
     bottom 0px
+    border-radius 25px
     transform translateY(100%)
     transition height 0.2s $ease
 
   &_media
 
     background-size: cover
-    border-radius 25px
     background-position center
     height 100%
     width 100%
     position absolute
+    border-radius 25px
     left 0px
     bottom 0px
     transition transform 0.4s $ease, opacity 0.4s $ease
+
+.safari
+
+  .ContinentItem
+
+    &_media
+
+      transform scale3d(1, 1, 1)!important
 
 </style>

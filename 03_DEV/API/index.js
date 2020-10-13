@@ -180,6 +180,10 @@ const resolvers = {
 };
 
 const server = new ApolloServer({
+  cors: {
+		origin: '*',
+    credentials: true
+  },
   typeDefs,
   resolvers,
   introspection: true,

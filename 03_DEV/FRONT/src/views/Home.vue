@@ -17,6 +17,14 @@
           <p class="big translate" v-html="$t('home.content')"></p>
           
           <Cta :link="{ name: 'continents' }" :ico="'far fa-arrow-right'" :content="$t('home.cta')" class="translate" />
+
+          <div class="Home_languages">
+            <p>
+              <b>{{ $t('global.languages') }}</b> 
+              <router-link :to="{ params: { locale: 'en' } }" :class="{ 'actif': $route.params.locale == 'en' }">English</router-link>
+              <router-link :to="{ params: { locale: 'fr' } }" :class="{ 'actif': $route.params.locale == 'fr' }">Français</router-link>
+            </p>
+          </div>
         </div>
       </div>
 
@@ -91,6 +99,35 @@ export default {
   flex-direction column
   align-items center
 
+  &_languages
+
+    position absolute
+    bottom 40px
+    left 40px
+
+    @media $medium
+
+      left unset
+      right 40px
+
+    @media $small
+
+      left unset
+      right unset
+      bottom unset
+      position relative
+      margin-top 40px
+
+    a
+
+      color $black
+      text-decoration none
+      margin-left 10px
+
+      &.actif
+
+        color black
+
   h2
 
     span, small
@@ -159,6 +196,7 @@ export default {
 
       max-width 690px
       min-height 571px
+      position relative
 
       @media $medium
 
