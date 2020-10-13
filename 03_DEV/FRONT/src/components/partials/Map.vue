@@ -380,6 +380,7 @@
           this.chartReady = true
           this.onUpdate = false
           this.zoom()
+          this.$emit('map-ready')
         })
       }
     },

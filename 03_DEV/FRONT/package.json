@@ -24,6 +24,7 @@
     "json-loader": "^0.5.7",
     "nib": "^1.1.2",
     "postcss-js": "^3.0.0",
+    "preloader": "^4.0.3",
     "prerender-spa-plugin": "^3.4.0",
     "raf": "^3.4.1",
     "stylus-easing": "^1.0.0",

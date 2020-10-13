@@ -6,7 +6,11 @@
     "explore": "Explore",
     "exploreOther": "Explore other countries of continent:",
     "languages": "Languages:",
-    "back": "back"
+    "back": "back",
+    "load": "Creation of the World",
+    "searchPlaceholder": "Find continent or country",
+    "search": "search",
+    "noResult": "No result"
   },
   "home": {
     "title": "Where are we going today?",

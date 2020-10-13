@@ -2,15 +2,17 @@
   <div id="Site">
 
     <transition name="map">
-      <Map ref="map" v-show="$route.name != 'home'" />
+      <Map ref="map" v-show="$route.name != 'home'" @map-ready="$refs.loader.onMapReady()" />
     </transition>
 
     <main role="main" id="Main">
-      <router-view ref="currentView"/>
+      <router-view ref="currentView" v-if="isLoaded" key="view" />
+      <transition name="fade" mode="out-in">
+        <Loader ref="loader" v-if="!isLoaded" key="loader" @load-complete="onLoadAllCompleted" />
+      </transition>
     </main>
 
-    <Header ref="header" />
-
+    <Header ref="header" v-if="isLoaded" />
   </div>
 </template>
 
@@ -24,16 +26,19 @@ import FastClick from 'fastclick'
 import LocalSwitcher from '@/components/LocalSwitcher'
 import Map from '@/components/partials/Map'
 import Header from '@/components/partials/Header'
+import Loader from '@/components/partials/Loader'
 
 export default {
   components: { 
     LocalSwitcher,
     Map,
-    Header
+    Header,
+    Loader
   },
   data () {
     return {
-      
+      cache: null,
+      isLoaded: false
     }
   },
   methods: {
@@ -41,6 +46,11 @@ export default {
       'setMousePosition',
       'setScrollTop'
     ]),
+    onLoadAllCompleted(files)
+    {
+      this.cache = files
+      this.isLoaded = true
+    },
     onScroll(e)
     {
       const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)

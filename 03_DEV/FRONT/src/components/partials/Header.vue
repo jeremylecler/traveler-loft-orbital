@@ -16,18 +16,25 @@
         <transition name="left" appear>
           <router-link :to="{ name: 'continents' }" tag="button" class="Cta Header_back" v-if="simpleHeader"><i class="far fa-arrow-left"></i> {{ $t('global.back') }}</router-link>
         </transition>
+
+        <Search ref="search" :isSmall="simpleHeader" />
       </div>
     </header>
   </transition>
 </template>
 
 <script>
+  import Search from '@/components/Search'
+
   export default {
     name: "Header",
     data() {
       return {
         simpleHeader: false
       }
+    },
+    components: {
+      Search
     },
     watch: {
       $route: {

@@ -36,7 +36,7 @@ export default {
   head: {
     title: function() {
       return {
-        inner: "Map"
+        inner: this.$t('home.cta')
       }
     }
   },

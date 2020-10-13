@@ -79,7 +79,7 @@ export default {
     transitionLeave(done)
     {
       this.$refs.swiper.leave()
-      TweenMax.staggerTo(this.$el.querySelectorAll('.translate'), 0.4, { opacity: 0, y: 40, ease: Quint.easeIn }, 0.08)
+      TweenMax.staggerTo(this.$el.querySelectorAll('.translate'), 0.4, { opacity: 0, y: 40, ease: Quint.easeIn }, 0.05)
       TweenMax.to(this.$el, 0.25, { delay: 0.6, opacity: 0, onComplete: () => { done() } })
     }
   },
@@ -142,7 +142,8 @@ export default {
     width 100%
     height 100%
     overflow hidden
-    opacity 0.15
+    background-color white
+    opacity 0.3
 
     &_media
 
@@ -163,7 +164,7 @@ export default {
 
     &_overlay
 
-      background-image: radial-gradient(50% 50%, rgba(255,255,255,0.0) 60%, rgba(255,255,255,0.60) 100%);
+      background-image: radial-gradient(50% 50%, rgba(255,255,255,0.0) 60%, rgba(255,255,255,1) 100%);
       position absolute
       top -15%
       left 0%
