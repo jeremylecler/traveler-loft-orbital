@@ -13,10 +13,10 @@
     <section class="Section Section_double">
       <div class="Section_col">
         <div class="Section_wrapper">
-          <h2><span class="translate">WHERE</span><small class="translate">are we going today ?</small></h2>
-          <p class="big translate">Explore the world and find the essential information that will allow you to plan your trip.</p>
+          <h2><span class="translate">{{ $t('home.titleTop') }}</span><small class="translate">{{ $t('home.titleBottom') }}</small></h2>
+          <p class="big translate" v-html="$t('home.content')"></p>
           
-          <Cta :link="{ name: 'continents' }" :ico="'far fa-arrow-right'" :content="'Explore the World'" class="translate" />
+          <Cta :link="{ name: 'continents' }" :ico="'far fa-arrow-right'" :content="$t('home.cta')" class="translate" />
         </div>
       </div>
 
@@ -54,7 +54,7 @@ export default {
   head: {
     title: function() {
       return {
-        inner: "Home"
+        inner: this.$t('home.title')
       }
     }
   },
@@ -157,7 +157,7 @@ export default {
 
     &_col:first-child
 
-      max-width 610px
+      max-width 690px
       min-height 571px
 
       @media $medium

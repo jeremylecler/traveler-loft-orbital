@@ -12,16 +12,16 @@
         <div class="Map_tooltip_media" :style="{ backgroundImage: 'url(' + media + ')' }"></div>
         <div class="Map_tooltip_overlay"></div>
         <div class="Map_tooltip_content">
-          <div class="Map_tooltip_content_countries"><img src="/assets/images/globe.svg" /> <span>{{ currentContinent.countries.length }} countries</span></div>
+          <div class="Map_tooltip_content_countries"><img src="/assets/images/globe.svg" /> <span>{{ currentContinent.countries.length }} {{ $t('global.countries') }}</span></div>
           <h3 v-html="lastSelected.name"></h3>
-          <a>Explore the continent <i class="fa fa-arrow-right"></i></a>
+          <a>{{ $t('global.exploreThe') }} continent <i class="fa fa-arrow-right"></i></a>
         </div>
       </div>
       <div class="Map_tooltip Map_tooltip-country" v-else-if="tooltip && lastSelected && currentCountry" ref="tooltip" :style="{ left: position.x - 145 + 'px', top: position.y + 'px' }" :key="lastSelected.id">
         <div class="Map_tooltip_content">
           <p><span v-html="currentCountry.emoji" class="big"></span> <span v-html="currentCountry.continent"></span></p>
           <h3 v-html="lastSelected.name"></h3>
-          <a>Explore the country <i class="fa fa-arrow-right"></i></a>
+          <a>{{ $t('global.exploreThe') }} {{ $t('global.country') }} <i class="fa fa-arrow-right"></i></a>
         </div>
       </div>
     </transition>

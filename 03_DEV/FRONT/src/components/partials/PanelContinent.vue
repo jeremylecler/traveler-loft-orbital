@@ -5,7 +5,7 @@
       <h2 v-html="continent.name"></h2>
       <div class="Table">
         <div class="Table_col">
-          <h4>Spoken languages</h4>
+          <h4>{{ $t('zoom.spoken') }}</h4>
         </div>
         <div class="Table_col">
           <p v-html="languages.join(' / ')"></p>
@@ -16,7 +16,7 @@
     <div class="Panel_sep"></div>
 
     <div class="Panel_wrapper Panel_wrapper-small">
-      <h4>Countries ( {{ continent.countries.length }} )</h4>
+      <h4>{{ $t('global.countries') }} ( {{ continent.countries.length }} )</h4>
 
       <div class="PanelContinent_countries">
         <CountryPush v-for="country in continent.countries" :key="country.code" :data="country" @mouseenter.native="onMouseOver(country)" @mouseleave.native="onMouseLeave(country)" />

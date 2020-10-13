@@ -1,3 +1,28 @@
 {
-  
+  "global": {
+    "country": "pays",
+    "countries": "pays",
+    "exploreThe": "Explorer le",
+    "explore": "Explorer",
+    "exploreOther": "Explorer d'autres pays du continent :",
+    "back": "retour"
+  },
+  "home": {
+    "title": "Où allons-nous aujourd'hui ?",
+    "titleTop": "OÙ",
+    "titleBottom": "allons-nous aujourd'hui ?",
+    "content": "Explorez le Monde et trouvez les informations essentielles qui vous permettront de planifier votre voyage.",
+    "cta": "Explorer le Monde"
+  },
+  "zoom": {
+    "states": "Etats",
+    "spoken": "Langues parlées :",
+    "capital": "Capitale :",
+    "population": "Population :",
+    "populationMore": "millions en 2019",
+    "gdp": "PIB par habitant :",
+    "gdpMore": "(EU€ courant) en 2018",
+    "co2": "Emissions de CO2 :",
+    "co2More": "tonnes par habitant en 2016"
+  }
 }

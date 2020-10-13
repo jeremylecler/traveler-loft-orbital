@@ -1,3 +1,28 @@
 {
-  
+  "global": {
+    "country": "country",
+    "countries": "countries",
+    "exploreThe": "Explore the",
+    "explore": "Explore",
+    "exploreOther": "Explore other countries of continent:",
+    "back": "back"
+  },
+  "home": {
+    "title": "Where are we going today?",
+    "titleTop": "WHERE",
+    "titleBottom": "are we going today?",
+    "content": "Explore the World and find the essential information that will allow you to plan your trip.",
+    "cta": "Explore the World"
+  },
+  "zoom": {
+    "states": "States",
+    "spoken": "Spoken languages:",
+    "capital": "Capital:",
+    "population": "Population:",
+    "populationMore": "millions in 2019",
+    "gdp": "GDP per capita:",
+    "gdpMore": "(current US$) in 2018",
+    "co2": "CO2 emissions:",
+    "co2More": "tons per capita in 2016"
+  }
 }

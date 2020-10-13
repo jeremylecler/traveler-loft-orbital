@@ -4,23 +4,23 @@
       <p class="big"><span v-html="country.emoji"></span><span v-if="country.native != country.name" v-html="country.native"></span></p>
       <h2 v-html="country.name"></h2>
     
-      <Cta :link="{ name: 'continent', params: { code: country.continent.code } }" :ico="'far fa-arrow-right'" :content="'Explore ' + country.continent.name" />
+      <Cta :link="{ name: 'continent', params: { code: country.continent.code } }" :ico="'far fa-arrow-right'" :content="$t('global.explore') + ' ' + country.continent.name" />
     </div>
     <div class="Panel_wrapper Panel_wrapper-small PanelCountry_details">
       <div class="PanelCountry_details_col">
-        <p class="big"><b><i class="fad fa-map-pin"></i> Capital:</b> {{ country.capital }}</p>
-        <p class="big"><b><i class="fad fa-comment-smile"></i> Spoken language{{ languages.length > 1 ? 's' : '' }}:</b> {{ languages.join(' / ') }}</p>
+        <p class="big"><b><i class="fad fa-map-pin"></i> {{ $t('zoom.capital') }}</b> {{ country.capital }}</p>
+        <p class="big"><b><i class="fad fa-comment-smile"></i> {{ $t('zoom.spoken') }}</b> {{ languages.join(' / ') }}</p>
       </div>
 
       <div class="PanelCountry_details_col">
-        <p><b>Population:</b> {{ $tools.randomNumber(18, 92) }} millions in 2019</p>
-        <p><b>GDP per capita:</b> {{ $tools.randomNumber(18, 46) }} (current US$) in 2018</p>
-        <p><b>CO2 emissions:</b> {{ $tools.randomNumber(1, 8) }} tons per capita in 2016</p>
+        <p><b>{{ $t('zoom.population') }}</b> {{ $tools.randomNumber(18, 92) }} {{ $t('zoom.populationMore') }}</p>
+        <p><b>{{ $t('zoom.gdp') }}</b> {{ $tools.randomNumber(18, 46) }} {{ $t('zoom.gdpMore') }}</p>
+        <p><b>{{ $t('zoom.co2') }}</b> {{ $tools.randomNumber(2, 8) }} {{ $t('zoom.co2More') }}</p>
       </div>
     </div>
 
     <div class="Panel_wrapper Panel_wrapper-small PanelCountry_states" v-if="country.states && country.states.length > 0">
-      <h4>States</h4>
+      <h4>{{ $t('zoom.states') }}</h4>
       <p v-html="states.join(' / ')"></p>
     </div>
 
@@ -29,7 +29,7 @@
     <div class="Panel_sep" v-if="country.states && country.states.length > 0"></div>
 
     <div class="Panel_wrapper Panel_wrapper-small PanelCountry_others">
-      <h4>Explore other countries of {{ country.continent.name }}</h4>
+      <h4>{{ $t('global.exploreOther') }} {{ country.continent.name }}</h4>
       <div class="PanelCountry_countries">
         <CountryPush v-for="country in suggestedCountries" :key="country.code" :data="country" @mouseenter.native="onMouseOver(country)" @mouseleave.native="onMouseLeave(country)" />
       </div>

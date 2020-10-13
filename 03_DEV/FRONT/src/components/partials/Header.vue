@@ -14,7 +14,7 @@
         </router-link>
 
         <transition name="left" appear>
-          <router-link :to="{ name: 'continents' }" tag="button" class="Cta Header_back" v-if="simpleHeader"><i class="far fa-arrow-left"></i> Back</router-link>
+          <router-link :to="{ name: 'continents' }" tag="button" class="Cta Header_back" v-if="simpleHeader"><i class="far fa-arrow-left"></i> {{ $t('global.back') }}</router-link>
         </transition>
       </div>
     </header>
