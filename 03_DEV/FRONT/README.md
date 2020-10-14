@@ -10,4 +10,4 @@
 
 <h3>Or...</h3>
 
-<p>Test directly on the production version by going to this address: <a href="https://traveler.jeremylecler.fr/" target="_blank"></a></p>
+<p>Test directly on the production version by going to this address: <a href="https://traveler.jeremylecler.fr/" target="_blank">https://traveler.jeremylecler.fr/</a></p>
