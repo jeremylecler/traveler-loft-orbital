@@ -21,3 +21,31 @@
   <pre>npm install</pre>
   <pre>npm run serve</pre>
 </p>
+
+<h3>Or...</h3>
+
+<p>Test directly on the production version by going to this address:<br><b><a href="https://traveler.jeremylecler.fr/" target="_blank"></a></b></p>
+
+<h2>Technical specifications</h2>
+
+<ul>
+  <li>Vue.js for the front part</li>
+  <li>Using the GraphQL <a href="https://github.com/trevorblades/countries" target="_blank">trevorblades/countries API</a> <i>(Failing to be able to use the everbase API which is no longer available)</i></li>
+  <li><a href="https://stylus-lang.com/" target="_blank">Stylus</a> for the CSS</li>
+  <li><a href="https://apollo.vuejs.org/" target="_blank">VueApollo</a> for the connection between the GraphQL API and the front</li>
+  <li>Vue-router for managing routes and urls</li>
+  <li>Vuex for store management</li>
+  <li>NPM / Webpack / Git</li>
+  <li><a href="https://www.amcharts.com/" target="_blank">AmCharts</a> for the creation and management of the map</li>
+  <li><a href="https://greensock.com/gsap/" target="_blank">GSAP</a> for animations</li>
+  <li><a href="https://kazupon.github.io/vue-i18n/" target="_blank">Vue-I18n</a> for english/french translation</li>
+  <li><a href="https://swiperjs.com/" target="_blank">Swiper.js</a> for the Home page swiper</li>
+  <li><a href="https://www.npmjs.com/package/preloader" target="_blank">Preloader.js</a> to preload the assets</li>
+</ul>
+
+<h3>Other solutions</h3>
+
+<ul>
+  <li>Using multiple generic functions with tools.js</li>
+  <li>Use of a custom parallax/mouse parallax scroll library <i>(ScrollDetector.js & ScrollParallax.js combined with scrollUpdate.js & mouseParallax.js mixins)</i></li>
+</ul>

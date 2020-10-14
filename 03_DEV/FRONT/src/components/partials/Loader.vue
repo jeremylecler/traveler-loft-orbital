@@ -103,6 +103,14 @@
     left 50%
     transform translate(-50%, -50%)
 
+    @media $small
+
+      top 62%
+
+    @media $xsmall
+
+      top 68%
+
   &_ico
 
     position absolute

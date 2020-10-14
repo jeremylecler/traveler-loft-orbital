@@ -14,10 +14,10 @@
         </router-link>
 
         <transition name="left" appear>
-          <router-link :to="{ name: 'continents' }" tag="button" class="Cta Header_back" v-if="simpleHeader"><i class="far fa-arrow-left"></i> {{ $t('global.back') }}</router-link>
+          <router-link :to="{ name: 'continents' }" tag="button" class="Cta Header_back" v-if="simpleHeader && withBack"><i class="far fa-arrow-left"></i> {{ $t('global.back') }}</router-link>
         </transition>
 
-        <Search ref="search" :isSmall="simpleHeader" />
+        <Search ref="search" :isSmall="simpleHeader" @open-search="onOpenSearch" />
       </div>
     </header>
   </transition>
@@ -30,7 +30,8 @@
     name: "Header",
     data() {
       return {
-        simpleHeader: false
+        simpleHeader: false,
+        withBack: true
       }
     },
     components: {
@@ -45,6 +46,17 @@
             this.simpleHeader = false
           else
             this.simpleHeader = true
+        }
+      }
+    },
+    methods: {
+      onOpenSearch(state)
+      {
+        if(this.$tools.isMobile() && state)
+        {
+          this.withBack = false
+        }else{
+          this.withBack = true
         }
       }
     }

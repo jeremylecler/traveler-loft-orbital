@@ -3,7 +3,7 @@
     
     <div class="Home_background">
       <transition name="blur" appear>
-        <div :key="currentContinent" class="Home_background_media">
+        <div :key="currentContinent" class="Home_background_media" v-if="currentContinent">
           <MouseParallax :r="-30" class="Home_background_media_back" :style="{ backgroundImage: 'url(/assets/images/medias/' + currentContinent.toLowerCase() + '-cover.png)' }"></MouseParallax>
         </div>
       </transition>
@@ -13,7 +13,7 @@
     <section class="Section Section_double">
       <div class="Section_col">
         <div class="Section_wrapper">
-          <h2><span class="translate">{{ $t('home.titleTop') }}</span><small class="translate">{{ $t('home.titleBottom') }}</small></h2>
+          <h2><span class="translate">{{ $t('home.titleTop') }}</span><small class="translate" v-html="$t('home.titleBottom')"></small></h2>
           <p class="big translate" v-html="$t('home.content')"></p>
           
           <Cta :link="{ name: 'continents' }" :ico="'far fa-arrow-right'" :content="$t('home.cta')" class="translate" />

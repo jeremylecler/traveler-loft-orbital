@@ -36,6 +36,13 @@
           else
             this.isOpen = true
         }
+      },
+      isOpen: {
+        immediate: true,
+        handler()
+        {
+          this.$emit('open-search', this.isOpen)
+        }
       }
     },
     apollo: {
@@ -64,10 +71,16 @@
           this.validateBeforeSubmit()
         }else{
           this.isOpen = true
+
+          this.$nextTick( () => {
+            this.$refs.input.focus()
+          })
         }
       },
       validateBeforeSubmit()
       {
+        this.$refs.input.blur()
+
         // Check and find if the text entered corresponds to a continent or a country
         if(this.search.length >= 1 && this.isOpen && !this.onProgress)
         {
@@ -116,6 +129,9 @@
         this.search = ''
         this.result = null
         this.onProgress = false
+
+        if(this.isSmall)
+          this.isOpen = false
       }
     },
     created()
@@ -140,6 +156,13 @@
   background-color white
   height 45px
 
+  @media $small
+
+    position absolute
+    top 22px
+    right 20px
+    height 37px
+
   &_form
 
     height 100%
@@ -147,6 +170,10 @@
     flex-direction row
     font-size 14px
     align-items stretch
+
+    @media $small
+
+      font-size 12px
 
   &_input
 
@@ -164,10 +191,23 @@
     color black 
     transition width 0.6s 0.2s $ease, padding 0.6s 0.2s $ease
 
+    @media $small
+
+      font-size 12px
+
     &-open
 
       width 250px
       padding 0px 20px
+
+      @media $small
+
+        width 200px
+        padding 0px 10px
+
+      @media $xsmall
+
+        width 140px
 
   &_action
 
@@ -177,6 +217,11 @@
     width 120px
     font-size 14px
     font-weight 500
+
+    @media $small
+
+      font-size 12px
+      width 80px
 
     &:hover
 
