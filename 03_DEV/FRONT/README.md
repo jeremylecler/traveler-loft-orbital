@@ -7,3 +7,7 @@
   <pre>npm install</pre>
   <pre>npm run serve</pre>
 </p>
+
+<h3>Or...</h3>
+
+<p>Test directly on the production version by going to this address: <a href="https://traveler.jeremylecler.fr/" target="_blank"></a></p>
