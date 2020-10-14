@@ -95,22 +95,24 @@
     methods: {
       onMouseOver(country)
       {
-        console.log(this.$parent.$parent.$parent)
+        // Colorize the country on the map
         this.$parent.$parent.$parent.$refs.map.overCountry(country.code)
       },
       onMouseLeave(country)
       {
-        console.log(this.$parent.$parent.$parent)
+        // Decolorize the country on the map
         this.$parent.$parent.$parent.$refs.map.blurCountry(country.code)
       }
     },
     beforeDestroy()
     {
+      // Decolorize the country on the map
       this.$parent.$parent.$parent.$refs.map.blurCountry(this.country.code.toUpperCase())
     },
     mounted()
     {
       setTimeout( () => {
+        // Colorize the country on the map
         this.$parent.$parent.$parent.$refs.map.overCountry(this.$route.params.code.toUpperCase())
       }, 1000)
     }

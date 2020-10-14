@@ -82,11 +82,6 @@
 
   export default {
     name: "Map",
-    props: {
-      isGlobalMap: {
-        type: Boolean
-      }
-    },
     data() {
       return {
         onUpdate: true,
@@ -129,7 +124,6 @@
       },
       currentContinent()
       {
-        console.log(this.lastSelected)
         if(this.continents.length > 0)
           return this.continents.find(c => c.name.toLowerCase() == this.lastSelected.name.toLowerCase())
         else
@@ -147,6 +141,7 @@
         {
           if(this.continents.length > 0)
           {
+            // When the data is retrieved with the API, then initialize the map
             this.initChart()
           }
         }
@@ -157,6 +152,7 @@
         {
           if(this.chartReady && this.$route.name != 'home')
           {
+            // If the route changes, then zoom in on the map
             this.zoom()
           }
         }
@@ -165,25 +161,35 @@
     methods: {
       overCountry(code)
       {
+        // Colorize the country on the map
         const last = this.countriesSerie.getPolygonById(code.toUpperCase())
         if(last)
           last.fill = am4core.color("#FEA400")
       },
       blurCountry(code)
       {
+        // Decolorize the country on the map
         const last = this.countriesSerie.getPolygonById(code.toUpperCase())
         if(last)
           last.fill = am4core.color("#ffffff")
       },
       zoom()
       {
+        // Zoom in on a continent or country
         if(this.$route.name == 'home' || this.$tools.isMobile()) return
 
         if(this.$route.name != 'continents')
         {   
           if(this.$route.name == 'continent'){
-            this.lastTarget = this.continentsSerie.getPolygonById(continentsAssociation.find(c => c.code == this.$route.params.code.toLowerCase()).id)
+            // Zoom in on a continent
+            // check if continent exist
+            let r = continentsAssociation.find(c => c.code == this.$route.params.code.toLowerCase())
+            if(r)
+              this.lastTarget = this.continentsSerie.getPolygonById(r.id)
+            else
+              this.$router.push({ name: 'continents' })
           }else{
+            // Zoom in on a country
             this.lastTarget = this.countriesSerie.getPolygonById(this.$route.params.code.toUpperCase())
           }
 
@@ -194,6 +200,7 @@
         }else{
           if(this.$route.name == 'continents')
           {
+            // Reset zoom position
             this.zoomToggle(false)
             this.chart.goHome()
           }
@@ -215,26 +222,32 @@
       },
       createCountriesSerie()
       {
+        // Generation of the different countries on the map according to the API data
         return new Promise((resolve, reject) => {
+          // Init amchart geo data
           this.countriesSerie = this.chart.series.push( new am4maps.MapPolygonSeries() )
           this.countriesSerie.name = 'CountriesSerie'
           this.countriesSerie.visible = false;
           this.countriesSerie.geodata = am4geodata_worldLow;
           this.countriesSerie.useGeodata = true
 
+          // Add only existing countries in the API
           this.countriesSerie.include = this.countries.map(c => c.code.toUpperCase())
 
-          // this.countriesSerie.events.once("inited", () => {
-          //   this.hideCountries();
-          // });
-
+          // Style definition
           this.countryTemplate = this.countriesSerie.mapPolygons.template
           this.countryTemplate.applyOnClones = true;
           this.countryTemplate.fill = am4core.color("#ffffff");
           this.countryTemplate.stroke = am4core.color("#D6D6D6")
           this.countryTemplate.nonScalingStroke = true;
           this.countryTemplate.strokeOpacity = 1;
+          
+          // Style rollover
+          let ss = this.countryTemplate.states.create("hover");
+          ss.properties.fill = am4core.color("#FEA400");
+          this.countryTemplate.cursorOverStyle = am4core.MouseCursorStyle.pointer;
 
+          // Initialization of events
           this.countryTemplate.events.on("over", ev => {
             if (this.$route.name != 'continents' || ev.event.buttons > 0) {
               this.lastSelected = ev.target.dataItem.dataContext
@@ -258,43 +271,39 @@
             }
           })
 
-          let ss = this.countryTemplate.states.create("hover");
-          ss.properties.fill = am4core.color("#FEA400");
-
-          this.countryTemplate.cursorOverStyle = am4core.MouseCursorStyle.pointer;
-
           resolve('Success!');
         })
       },
       createContinentsSerie()
       {
+        // Generation of the different continents on the map according to the API data
         return new Promise((resolve, reject) => {
+          // Init amchart geo data
           this.continentsSerie = this.chart.series.push( new am4maps.MapPolygonSeries() )
           this.continentsSerie.name = 'ContinentsSerie'
           this.continentsSerie.geodata = am4geodata_continentsLow;
           this.continentsSerie.useGeodata = true
 
+          // Add only existing continents in the API
+          this.continentsSerie.data = continentsAssociation;
+
+          // Style definition
           this.continentsSerie.mapPolygons.template.fill = am4core.color("#ffffff");
           this.continentsSerie.mapPolygons.template.stroke = am4core.color("#D6D6D6")
           this.continentsSerie.mapPolygons.template.propertyFields.fill = "fill";
           this.continentsSerie.dataFields.zoomLevel = "zoomLevel";
           this.continentsSerie.dataFields.zoomGeoPoint = "zoomGeoPoint";
-
           this.continentTemplate = this.continentsSerie.mapPolygons.template;
-          this.continentTemplate.properties.fillOpacity = 0.8; // Reduce conflict with back to continents map label
+          this.continentTemplate.properties.fillOpacity = 0.8; 
           this.continentTemplate.propertyFields.fill = "color";
           this.continentTemplate.nonScalingStroke = true;
 
+          // Style rollover
           let continentHover = this.continentTemplate.states.create("hover");
           continentHover.properties.opacity = 0.3
-
           this.continentTemplate.cursorOverStyle = am4core.MouseCursorStyle.pointer;
 
-          this.continentsSerie.dataFields.zoomLevel = "zoomLevel";
-          this.continentsSerie.dataFields.zoomGeoPoint = "zoomGeoPoint";
-
-          this.continentsSerie.data = continentsAssociation;
-
+          // Initialization of events
           this.continentsSerie.mapPolygons.template.events.on("over", ev => {
             if(this.$route.name != 'continents' || ev.event.buttons > 0) return
 
@@ -329,13 +338,9 @@
         if(state)
         {
           this.continentsSerie.hide()
-          // this.countriesSerie.show();
         }else{
-
-          // this.countriesSerie.hide();
           this.continentsSerie.show()
         }
-        
       },
       onMouseMove(ev)
       {
@@ -351,6 +356,7 @@
       },
       setChart()
       {
+        // Basic map configuration
         this.chart.chartContainer.wheelable = false
         this.chart.maxZoomLevel = 3;
         this.chart.minZoomLevel = 0.8;
@@ -363,20 +369,20 @@
       {
         this.chart = am4core.create("chartdiv", am4maps.MapChart);
 
-        // // Set map definition
+        // Set map definition
         this.chart.geodata = am4geodata_worldLow
 
-        // // // Set projection
+        // Set projection
         this.chart.projection = new am4maps.projections.Mercator();
-
+        
+        // Data generation
         this.createCountriesSerie().then( () => { console.log('createCountriesSerie complete') })
         this.createContinentsSerie().then( () => { console.log('createContinentsSerie complete') })
 
         this.setChart()
 
-        // // Init
         this.chart.events.on("ready", () => {
-          // this.chart.zoomToMapObject(this.countriesSerie.getPolygonById("FR"))
+          console.log('Map is ready')
           this.chartReady = true
           this.onUpdate = false
           this.zoom()
@@ -387,10 +393,6 @@
     beforeDestroy()
     {
       this.$el.removeEventListener('mousemove', this.onMouseMove)
-    },
-    mounted()
-    {
-      
     }
   }
 </script>

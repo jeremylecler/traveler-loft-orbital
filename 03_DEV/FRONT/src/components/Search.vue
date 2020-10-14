@@ -15,7 +15,7 @@
     props: {
       isSmall: {
         type: Boolean,
-        default: false
+        default: true
       }
     },
     data() {
@@ -57,20 +57,6 @@
       },
     },
     methods: {
-      slugify(string) {
-        const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;'
-        const b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------'
-        const p = new RegExp(a.split('').join('|'), 'g')
-
-        return string.toString().toLowerCase()
-          .replace(/\s+/g, '-') // Replace spaces with -
-          .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
-          .replace(/&/g, '-and-') // Replace & with 'and'
-          .replace(/[^\w\-]+/g, '') // Remove all non-word characters
-          .replace('-', '') // Replace multiple - with single -
-          .replace(/^-+/, '') // Trim - from start of text
-          .replace(/-+$/, '') // Trim - from end of text
-      },
       action()
       {
         if(this.isOpen)
@@ -82,26 +68,28 @@
       },
       validateBeforeSubmit()
       {
+        // Check and find if the text entered corresponds to a continent or a country
         if(this.search.length >= 1 && this.isOpen && !this.onProgress)
         {
-          console.log(this.slugify(this.search))
           this.onProgress = true
           for (let i = 0; i < this.continents.length; i++) {
             const element = this.continents[i];
 
-            if(this.slugify(element.name).indexOf(this.slugify(this.search)) > -1)
+            if(this.$tools.slugify(element.name).indexOf(this.$tools.slugify(this.search)) > -1)
             {
               this.result = element
               break
             }
           }
 
+          // If the search corresponds to a continent, we stop there. Otherwise, we search in countries (optim)
+
           if(!this.result)
           {
             for (let i = 0; i < this.countries.length; i++) {
               const element = this.countries[i];
 
-              if(this.slugify(element.name).indexOf(this.slugify(this.search)) > -1)
+              if(this.$tools.slugify(element.name).indexOf(this.$tools.slugify(this.search)) > -1)
               {
                 this.result = element
                 break
@@ -112,6 +100,7 @@
           if(this.result){
             this.$router.push({ name: this.result.countries ? 'continent' : 'country', params: { code: this.result.code } })
           }else{
+            // Show error message
             this.$refs.input.placeholder = this.$t('global.noResult')
 
             setTimeout( () => {
@@ -119,11 +108,24 @@
             }, 1500)
           }
 
-          this.search = ''
-          this.result = null
-          this.onProgress = false
+          this.reset()
         }
+      },
+      reset()
+      {
+        this.search = ''
+        this.result = null
+        this.onProgress = false
       }
+    },
+    created()
+    {
+      this.isOpen = false
+    },
+    mounted()
+    {
+      if(!this.isSmall)
+        this.isOpen = true
     }
   }
 </script>
@@ -164,7 +166,7 @@
 
     &-open
 
-      width 240px
+      width 250px
       padding 0px 20px
 
   &_action

@@ -1,7 +1,8 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-import { TweenMax, ScrollToPlugin } from 'gsap/all'
+import { TweenMax } from 'gsap'
+
 import Vue from 'vue'
 import App from './App'
 import router from '@/router'
@@ -11,9 +12,12 @@ import filters from '@/plugins/filters'
 import tools from '@/plugins/tools'
 import scroll from '@/plugins/scroll'
 import VueHead from 'vue-head'
+import { ApolloClient } from 'apollo-client'
+import { createHttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
 import VueApollo from 'vue-apollo'
-import ApolloClient from 'apollo-boost'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+
 
 // Multilingual configuration
 import i18n from "@/plugins/i18n";
@@ -24,14 +28,22 @@ import {
   setDocumentLang
 } from "@/utils/i18n/document"
 
+
 // Apollo configuration
-Vue.use(VueApollo)
-const apolloClient = new ApolloClient({
+const httpLink = createHttpLink({
   uri: process.env.VUE_APP_API_URL
 })
-const apolloProvider = new VueApollo({
-  defaultClient: apolloClient
+const cache = new InMemoryCache()
+const apolloClient = new ApolloClient({
+  link: httpLink,
+  cache,
 })
+
+Vue.use(VueApollo)
+const apolloProvider = new VueApollo({
+  defaultClient: apolloClient,
+})
+
 
 Vue.config.productionTip = false;
 
@@ -44,8 +56,9 @@ Vue.use(VueHead, {
 })
 Vue.use(VueAwesomeSwiper)
 
+
 router.beforeEach((to, from, next) => {
-  // Langs gestion
+  // Check languages 
   if (to.params.locale === from.params.locale) {
     next()
     return
@@ -64,6 +77,7 @@ router.beforeEach((to, from, next) => {
   }
 })
 
+
 const app = new Vue({
   router,
   store,
@@ -71,5 +85,6 @@ const app = new Vue({
   apolloProvider,
   render: h => h(App)
 })
+
 
 app.$mount('#Site')

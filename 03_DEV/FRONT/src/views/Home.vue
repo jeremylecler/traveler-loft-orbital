@@ -4,7 +4,7 @@
     <div class="Home_background">
       <transition name="blur" appear>
         <div :key="currentContinent" class="Home_background_media">
-          <MouseParallax :r="-30" class="Home_background_media_back" :style="{ backgroundImage: 'url(/assets/images/medias/' + currentContinent + '-cover.png)' }"></MouseParallax>
+          <MouseParallax :r="-30" class="Home_background_media_back" :style="{ backgroundImage: 'url(/assets/images/medias/' + currentContinent.toLowerCase() + '-cover.png)' }"></MouseParallax>
         </div>
       </transition>
       <div class="Home_background_overlay"></div>
@@ -21,8 +21,7 @@
           <div class="Home_languages">
             <p>
               <b>{{ $t('global.languages') }}</b> 
-              <router-link :to="{ params: { locale: 'en' } }" :class="{ 'actif': $route.params.locale == 'en' }">English</router-link>
-              <router-link :to="{ params: { locale: 'fr' } }" :class="{ 'actif': $route.params.locale == 'fr' }">Français</router-link>
+              <router-link :to="{ params: { locale: locale.code } }" :class="{ 'actif': $route.params.locale == locale.code }" v-for="locale in locales" :key="locale.code">{{ locale.name }}</router-link>
             </p>
           </div>
         </div>
@@ -40,6 +39,7 @@
 
 import * as API from "@/config/graphql"
 import page from "@/mixins/page"
+import { getSupportedLocales } from "@/utils/i18n/supported-locales"
 
 import Cta from '@/components/Cta'
 import ContinentsSwiper from '@/components/ContinentsSwiper'
@@ -49,7 +49,8 @@ export default {
   mixins: [ page ],
   data () {
     return {
-      currentContinent: null
+      currentContinent: null,
+      locales: getSupportedLocales()
     }
   },
   apollo: {

@@ -1,7 +1,7 @@
 <template>
   <div class="ContinentsSwiper">
     <swiper class="ContinentsSwiper_swiper" ref="mySwiper" :options="swiperOptions" :cleanup-styles-on-destroy="false" @slideChangeTransitionStart="onTransitionStart" @reachEnd="onEnd"> 
-      <swiper-slide class="ContinentsSwiper_slide" v-for="continent in continents" :key="continent.code" >
+      <swiper-slide class="ContinentsSwiper_slide" v-for="continent in continents" :key="continent.code" @click.native="go(continent)">
         <ContinentItem ref="cards" :data="continent" @mouseover.native="onMouseOver(continent.code)" @mouseleave.native="onMouseLeave" :class="{ 'ContinentItem-focus': continents[realIndex - 1].code == continent.code }" />
       </swiper-slide>
     </swiper>
@@ -67,9 +67,7 @@
           if(this.continents.length > 0)
           {
             this.$nextTick( () => {
-              this.onMouseOver(this.continents[0].code)
-              this.setAutoplay()
-              this.enter()
+              this.init()
             })
           }
         }
@@ -81,13 +79,25 @@
       }
     },
     methods: {
+      init()
+      {
+        this.onMouseOver(this.continents[0].code)
+        this.setAutoplay()
+        this.enter()
+      },
+      go(data)
+      {
+        this.$router.push({ name: 'continent', params: { code: data.code } })
+      },
       onMouseOver(code)
       {
+        // When the mouse hovers over a card, change the home background and block the scrolling of the swiper
         clearInterval(this.autoplayInterval)
         this.$emit('current-continent', code.toLowerCase())
       },
       onMouseLeave()
       {
+        // When the mouse is out of a card, activate the automatic scrolling of the swiper
         this.setAutoplay()
       },
       next()
@@ -100,6 +110,7 @@
       },
       setAutoplay()
       {
+        // Swiper autoplay
         clearInterval(this.autoplayInterval)
         this.autoplayInterval = setInterval( () => {
           if(this.progress == 100)
@@ -144,7 +155,6 @@
         TweenMax.staggerTo(slides, 0.3, { x: '200%', opacity: 0, ease: Circ.easeIn }, 0.05)
         
         TweenMax.to(this.$el.querySelectorAll('.Cta_circle'), 0.2, { delay: 0.3, scale: 0.3, opacity: 0, ease: Quint.easeIn })
-        // TweenMax.fromTo(this.$el.querySelectorAll('.Cta_circle i'), 0.6, { scale: 0.1, opacity: 0 }, { delay: 0.9, scale: 1, opacity: 1, ease: Quint.easeOut })
         
         TweenMax.to(this.$el.querySelector('.ContinentsSwiper_navigation_sep'), 0.2, { delay: 0.1, scaleX: 0, ease: Quint.easeIn })
         TweenMax.to(this.$el.querySelector('.ContinentsSwiper_navigation_step'), 0.2, { opacity: 0, ease: Quint.easeIn })

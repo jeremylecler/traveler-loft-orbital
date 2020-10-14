@@ -16,26 +16,28 @@
     data() {
       return {
         mapReady: false,
-        filesLoaded: false,
-        loadCount: 5,
-        files: []
+        filesLoaded: false
       }
     },
     methods: {
-      loadingComplete()
+      leaveTransition()
       {
-        console.log('loadComplete 100%')
         TweenMax.to(this.$el.querySelector('.Loader_ico'), 0.8, { opacity: 0, scale: 0.7, ease: Quint.easeIn })
         TweenMax.to(this.$el.querySelector('.Loader_ico_back'), 0.6, { scale: 1.8, ease: Quint.easeIn })
         TweenMax.to(this.$el.querySelector('h4'), 0.4, { opacity: 0,  ease: Quint.easeIn })
-
+      },
+      loadingComplete()
+      {
+        console.log('loadComplete 100%')
+        this.leaveTransition()
+        
         setTimeout( () => {
-          
-          this.$emit('load-complete', this.files)
+          this.$emit('load-complete')
         }, 1000)
       },
       load()
       {
+        // Preloading site assets
         var preloader = require('preloader');
         var loader = preloader({
           xhrImages: false
@@ -68,22 +70,15 @@
 
         loader.load()
       },
-      loaded()
-      {
-        console.log('loaded')
-        this.loadCount = this.loadCount + 1
-      },
       onMapReady()
       {
+        // If the map is initialized, check that the assets are loaded
         this.mapReady = true
         this.checkLoad()
-
-        setTimeout( () => {
-          this.loadCount = 100
-        }, 1500)
       },
       checkLoad()
       {
+        // If the map is initialized and the files loaded, then the site is loaded
         if(this.filesLoaded && this.mapReady)
           this.loadingComplete()
       },

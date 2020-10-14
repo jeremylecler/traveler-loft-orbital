@@ -73,12 +73,12 @@
     methods: {
       onMouseOver(country)
       {
-        console.log(this.$parent.$parent.$parent)
+        // Colorize the country on the map
         this.$parent.$parent.$parent.$refs.map.overCountry(country.code)
       },
       onMouseLeave(country)
       {
-        console.log(this.$parent.$parent.$parent)
+        // Decolorize the country on the map
         this.$parent.$parent.$parent.$refs.map.blurCountry(country.code)
       }
     }

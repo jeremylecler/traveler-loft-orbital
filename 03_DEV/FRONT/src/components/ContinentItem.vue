@@ -1,12 +1,12 @@
 <template>
-  <router-link tag="article" :to="{ name: 'continent', params: { code: data.code } }" class="ContinentItem">
+  <article class="ContinentItem">
     <div class="ContinentItem_media" :style="{ backgroundImage: 'url(' + media + ')' }"></div>
     <div class="ContinentItem_overlay"></div>
     <div class="ContinentItem_content">
       <div class="ContinentItem_content_countries"><img src="/assets/images/globe.svg" /> <span>{{ data.countries.length }} {{ $t('global.countries') }}</span></div>
       <h3 v-html="data.name"></h3>
     </div>
-  </router-link>
+  </article>
 </template>
 
 <script>

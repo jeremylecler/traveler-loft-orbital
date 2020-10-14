@@ -12,7 +12,7 @@
        props: [ 'r' ],
        created()
        {
-           this.ratio = this.r ? this.r : this.ratio
+            this.ratio = this.r ? this.r : this.ratio
        }
     }
 </script>

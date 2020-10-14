@@ -89,7 +89,6 @@ export default {
       window.removeEventListener('resize', this.replace)
     },
     destroyParallax () {
-      console.log('destroyParallax')
       this.stopParallax()
       if (this.timeReplace) clearInterval(this.timeReplace)
       this.timeReplace = null

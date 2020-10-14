@@ -26,9 +26,6 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    getGlobalData(state)
-    {
-      return state.globalData
-    }
+    
   }
 })

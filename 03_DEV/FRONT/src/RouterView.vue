@@ -5,11 +5,11 @@
 </template>
 
 <script>
+  // Language management
   export default {
     methods: {
       enter(el, done)
       {
-        console.log('enter')
         this.$refs.currentView.transitionEnter(done)
       },
       leave(el, done)
@@ -19,7 +19,3 @@
     }
   }
 </script>
-
-<style lang="stylus" scoped>
-
-</style>
