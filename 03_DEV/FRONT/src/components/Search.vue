@@ -115,8 +115,9 @@
           }else{
             // Show error message
             this.$refs.input.placeholder = this.$t('global.noResult')
-
+            this.error = true
             setTimeout( () => {
+              this.error = false
               this.$refs.input.placeholder = this.$t('global.searchPlaceholder')
             }, 1500)
           }
@@ -130,7 +131,7 @@
         this.result = null
         this.onProgress = false
 
-        if(this.isSmall)
+        if(this.isSmall && !this.error)
           this.isOpen = false
       }
     },

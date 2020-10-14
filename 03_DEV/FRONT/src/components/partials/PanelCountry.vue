@@ -24,8 +24,6 @@
       <p v-html="states.join(' / ')"></p>
     </div>
 
-    
-
     <div class="Panel_sep" v-if="country.states && country.states.length > 0"></div>
 
     <div class="Panel_wrapper Panel_wrapper-small PanelCountry_others">

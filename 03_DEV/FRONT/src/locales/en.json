@@ -10,7 +10,9 @@
     "load": "Creation of the World",
     "searchPlaceholder": "Find continent or country",
     "search": "search",
-    "noResult": "No result"
+    "noResult": "No result",
+    "toggleCountries": "show countries",
+    "toggleContinents": "show continents"
   },
   "home": {
     "title": "Where are we going today?",

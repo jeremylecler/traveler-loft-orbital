@@ -29,6 +29,15 @@
     <transition name="fade">
       <div class="Map_load" v-show="onUpdate"><i class="fad fa-spinner-third"></i></div>
     </transition>
+    
+    <transition name="fade">
+      <button class="Cta Map_toggle" v-if="$route.name == 'continents'" @click="toggleDetails">
+        <transition name="fade" mode="out-in">
+          <span v-if="!detailsCountries" key="zi">{{ $t('global.toggleCountries') }} <i class="far fa-search-plus"></i></span>
+          <span v-else key="zo">{{ $t('global.toggleContinents') }} <i class="far fa-search-minus"></i></span>
+        </transition>
+      </button>
+    </transition>
 
   </section>
 </template>
@@ -84,6 +93,7 @@
     name: "Map",
     data() {
       return {
+        detailsCountries: false,
         onUpdate: true,
         chartReady: false,
         continents: [],
@@ -159,6 +169,19 @@
       }
     },
     methods: {
+      toggleDetails()
+      {
+        this.detailsCountries = !this.detailsCountries
+        
+        this.zoomToggle(this.detailsCountries)
+
+        if(this.detailsCountries)
+        {
+          this.zoomIn()
+        }else{
+          this.chart.goHome()
+        }
+      },
       overCountry(code)
       {
         // Colorize the country on the map
@@ -201,6 +224,7 @@
           if(this.$route.name == 'continents')
           {
             // Reset zoom position
+            this.detailsCountries = false
             this.zoomToggle(false)
             this.chart.goHome()
           }
@@ -249,26 +273,20 @@
 
           // Initialization of events
           this.countryTemplate.events.on("over", ev => {
-            if (this.$route.name != 'continents' || ev.event.buttons > 0) {
-              this.lastSelected = ev.target.dataItem.dataContext
-              this.tooltip = true
-              
-              this.position = { x: Number(ev.event.layerX), y: Number(ev.event.layerY) }
-              this.$el.addEventListener('mousemove', this.onMouseMove)
-            }
+            this.lastSelected = ev.target.dataItem.dataContext
+            this.tooltip = true
+            
+            this.position = { x: Number(ev.event.layerX), y: Number(ev.event.layerY) }
+            this.$el.addEventListener('mousemove', this.onMouseMove)
           })
 
           this.countryTemplate.events.on("out", ev => {
-            if (this.$route.name != 'continents')
-              this.tooltip = false
+            this.tooltip = false
           })
 
           this.countryTemplate.events.on("hit", ev => {
             this.lastSelected = ev.target.dataItem.dataContext
-
-            if(this.$route.name != 'continents'){
-              this.$router.push({ name: 'country', params: { code: ev.target.dataItem.dataContext.id.toLowerCase() } })
-            }
+            this.$router.push({ name: 'country', params: { code: ev.target.dataItem.dataContext.id.toLowerCase() } })
           })
 
           resolve('Success!');
@@ -357,7 +375,7 @@
       setChart()
       {
         // Basic map configuration
-        this.chart.chartContainer.wheelable = false
+        // this.chart.chartContainer.wheelable = false
         this.chart.maxZoomLevel = 3;
         this.chart.minZoomLevel = 0.8;
         this.chart.chartContainer.preventDragOut = true;
@@ -410,6 +428,35 @@
   right 0px
   overflow hidden
 
+  &_toggle
+
+    height 40px
+    position absolute!important
+    width 190px
+    left 40px
+    bottom 40px
+    z-index 6
+    background-color $secondary!important
+    color white!important
+
+    @media $small
+
+      bottom 20px
+      left 20px
+      font-size 12px
+      width 170px
+
+    &:hover
+
+      i
+
+        transform scale(1.4)
+
+    i
+
+      margin-left 5px
+      transition 0.3s $ease
+
   #chartdiv
 
     position relative
@@ -452,6 +499,11 @@
     bottom 40px
     display flex
     flex-direction row
+
+    @media $small
+
+      bottom 20px
+      right 20px
 
     button 
 

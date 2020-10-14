@@ -10,7 +10,9 @@
     "load": "Création du Monde",
     "searchPlaceholder": "Trouver un continent ou un pays",
     "search": "trouver",
-    "noResult": "Aucun résultat"
+    "noResult": "Aucun résultat",
+    "toggleCountries": "afficher les pays",
+    "toggleContinents": "afficher les continents"
   },
   "home": {
     "title": "Où allons-nous aujourd'hui ?",
