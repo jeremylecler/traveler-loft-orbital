@@ -38,6 +38,7 @@ Unfortunately the proposed API (Everbase) is no longer available. So I had to ta
 Search engine (search for a continent or a country)
 Interactive map to visualize the different continents and countries
 Country suggestions
+Exchange rate
 Translation of the site in multiple languages
 Filter countries and continents (by languages spoken for example)
 Comparison between two countries or continents
@@ -140,6 +141,9 @@ One open and one closed (on the details of a continent or country).
 Based on the content entered in an input [type="text"], if there is a match, then the user navigates to the requested continent or country.
 To do this, when submitting the form, the content of the input is passed into a slugify() (/src/plugins/tools.js) function, then a first loop is performed on all the continents. If no results are found, then a second loop is performed on the countries. This order makes it possible to optimize the search (there are 7 continents vs 250 countries).
 If there is no match, an error message is displayed.
+
+<h3>Exchange rate:</h3>
+The exchange rates are retrieved using an API. To do so I use Axios. In real time, the user can transform their money into another currency.
 
 <h3>Map:</h3>
 The interactive map uses the AmChart library. I have already used this library for a project for EDF in partnership with Ipsos.

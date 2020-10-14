@@ -30,6 +30,9 @@
     "gdp": "GDP per capita:",
     "gdpMore": "(current US$) in 2018",
     "co2": "CO2 emissions:",
-    "co2More": "tons per capita in 2016"
+    "co2More": "tons per capita in 2016",
+    "convert": "Convert your money",
+    "after": "You will have:",
+    "before": "You have:"
   }
 }

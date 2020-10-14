@@ -30,6 +30,9 @@
     "gdp": "PIB par habitant :",
     "gdpMore": "(EU€ courant) en 2018",
     "co2": "Emissions de CO2 :",
-    "co2More": "tonnes par habitant en 2016"
+    "co2More": "tonnes par habitant en 2016",
+    "convert": "Convertissez votre argent",
+    "after": "Vous aurez :",
+    "before": "Vous avez :"
   }
 }

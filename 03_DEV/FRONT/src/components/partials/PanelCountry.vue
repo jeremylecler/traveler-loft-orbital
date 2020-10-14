@@ -19,6 +19,12 @@
       </div>
     </div>
 
+    <div class="Panel_wrapper Panel_wrapper-small PanelCountry_exchange">
+      <ExchangeInput ref='exchange' />
+    </div>
+
+    <div class="Panel_sep"></div>
+
     <div class="Panel_wrapper Panel_wrapper-small PanelCountry_states" v-if="country.states && country.states.length > 0">
       <h4>{{ $t('zoom.states') }}</h4>
       <p v-html="states.join(' / ')"></p>
@@ -41,6 +47,7 @@
 
   import CountryPush from '@/components/CountryPush'
   import Cta from '@/components/Cta'
+  import ExchangeInput from '@/components/ExchangeInput'
 
   export default {
     name: "PanelCountry",
@@ -62,7 +69,8 @@
     },
     components: {
       CountryPush,
-      Cta
+      Cta,
+      ExchangeInput
     },
     computed: {
       suggestedCountries()

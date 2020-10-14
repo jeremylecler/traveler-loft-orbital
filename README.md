@@ -30,12 +30,13 @@
 
 <ul>
   <li>Vue.js for the front part</li>
-  <li>Using the GraphQL <a href="https://github.com/trevorblades/countries" target="_blank">trevorblades/countries API</a> <i>(Failing to be able to use the everbase API which is no longer available)</i></li>
+  <li>Using the GraphQL <a href="https://github.com/trevorblades/countries" target="_blank">trevorblades/countries API</a> <i>(Failing to be able to use the Everbase API which is no longer available)</i></li>
   <li><a href="https://stylus-lang.com/" target="_blank">Stylus</a> for the CSS</li>
   <li><a href="https://apollo.vuejs.org/" target="_blank">VueApollo</a> for the connection between the GraphQL API and the front</li>
   <li>Vue-router for managing routes and urls</li>
   <li>Vuex for store management</li>
   <li>NPM / Webpack / Git</li>
+  <li>Axios to communicate with a Rest API</li>
   <li><a href="https://www.amcharts.com/" target="_blank">AmCharts</a> for the creation and management of the map</li>
   <li><a href="https://greensock.com/gsap/" target="_blank">GSAP</a> for animations</li>
   <li><a href="https://kazupon.github.io/vue-i18n/" target="_blank">Vue-I18n</a> for english/french translation</li>

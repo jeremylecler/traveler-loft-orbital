@@ -9,6 +9,7 @@ import router from '@/router'
 import store from '@/store'
 import raf from '@/plugins/raf'
 import filters from '@/plugins/filters'
+import api from '@/plugins/api'
 import tools from '@/plugins/tools'
 import scroll from '@/plugins/scroll'
 import VueHead from 'vue-head'
@@ -50,6 +51,7 @@ Vue.config.productionTip = false;
 Vue.use(raf)
 Vue.use(tools)
 Vue.use(scroll)
+Vue.use(api)
 Vue.use(VueHead, {
   complement: 'Traveler',
   separator: '•'
