@@ -56,6 +56,6 @@
 
 <p>Time was running out with Toggl software:</br></p>
 
-<p><b>Learning GraphQL</b> 3 hours</p>
+<p><b>Learning GraphQL:</b> 3 hours</p>
 <p><b>UX & UI:</b> 5 hours</p>
 <p><b>Development:</b> 16 hours</p>
