@@ -49,3 +49,13 @@
   <li>Using multiple generic functions with tools.js</li>
   <li>Use of a custom parallax/mouse parallax scroll library <i>(ScrollDetector.js & ScrollParallax.js combined with scrollUpdate.js & mouseParallax.js mixins)</i></li>
 </ul>
+
+<h2>Other</h2>
+
+<h3>Time spent on the project</h3>
+
+<p>Time was running out with Toggl software:</br></p>
+
+<p><b>Learning GraphQL</b> 3 hours</p>
+<p><b>UX & UI:</b> 5 hours</p>
+<p><b>Development:</b> 16 hours</p>
