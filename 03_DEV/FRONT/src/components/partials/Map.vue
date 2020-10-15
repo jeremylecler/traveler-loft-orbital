@@ -97,7 +97,6 @@
     name: "Map",
     data() {
       return {
-        withTuto: false,
         detailsCountries: false,
         onUpdate: true,
         chartReady: false,
@@ -169,16 +168,6 @@
           {
             // If the route changes, then zoom in on the map
             this.zoom()
-          }
-
-          if(this.$route.name == 'continents')
-          {
-            setTimeout( () => {
-              this.withTuto = true
-              setTimeout( () => {
-                this.withTuto = false
-              }, 3000)
-            }, 1500)
           }
         }
       }
