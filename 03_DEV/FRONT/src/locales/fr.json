@@ -8,11 +8,13 @@
     "languages": "Langues :",
     "back": "retour",
     "load": "Création du Monde",
+    "loadMore": "cela devrait prendre moins de 7 jours",
     "searchPlaceholder": "Trouver un continent ou un pays",
     "search": "trouver",
     "noResult": "Aucun résultat",
     "toggleCountries": "afficher les pays",
-    "toggleContinents": "afficher les continents"
+    "toggleContinents": "afficher les continents",
+    "tuto": "Explorez le monde en naviguant sur la carte.<br><small>Cliquez sur un continent ou un pays pour obtenir plus d'informations.</small>"
   },
   "home": {
     "title": "Où allons-nous aujourd'hui ?",

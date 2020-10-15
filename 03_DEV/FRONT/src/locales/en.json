@@ -8,11 +8,13 @@
     "languages": "Languages:",
     "back": "back",
     "load": "Creation of the World",
+    "loadMore": "it should take less than 7 days",
     "searchPlaceholder": "Find continent or country",
     "search": "search",
     "noResult": "No result",
     "toggleCountries": "show countries",
-    "toggleContinents": "show continents"
+    "toggleContinents": "show continents",
+    "tuto": "Explore the world by navigating the map.<br><small>Click on a continent or country for more information.</small>"
   },
   "home": {
     "title": "Where are we going today?",

@@ -39,6 +39,10 @@
       </button>
     </transition>
 
+    <transition name="fade">
+      <p class="Map_infos" v-html="$t('global.tuto')" v-if="$route.name == 'continents'"></p>
+    </transition>
+
   </section>
 </template>
 
@@ -93,6 +97,7 @@
     name: "Map",
     data() {
       return {
+        withTuto: false,
         detailsCountries: false,
         onUpdate: true,
         chartReady: false,
@@ -164,6 +169,16 @@
           {
             // If the route changes, then zoom in on the map
             this.zoom()
+          }
+
+          if(this.$route.name == 'continents')
+          {
+            setTimeout( () => {
+              this.withTuto = true
+              setTimeout( () => {
+                this.withTuto = false
+              }, 3000)
+            }, 1500)
           }
         }
       }
@@ -430,6 +445,36 @@
   top 0px
   right 0px
   overflow hidden
+
+  &_infos
+
+    position absolute
+    bottom 40px
+    left 50%
+    transform translate(-50%, 0%)
+    z-index 6
+    text-align center
+    color black
+    font-weight 500
+    pointer-events none
+
+    @media $medium
+
+      display none
+
+  &_tuto
+
+    position absolute
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
+    z-index 6
+    pointer-events none
+
+    i
+
+      animation map 3s linear 2
+      font-size 40px
 
   &_toggle
 

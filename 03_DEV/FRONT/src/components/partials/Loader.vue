@@ -6,7 +6,7 @@
       <img src="/assets/images/globe.svg" alt="Loading" />
     </div>
 
-    <h4>{{ $t('global.load') }}</h4>
+    <h4>{{ $t('global.load') }}<br></small><small>{{ $t('global.loadMore') }}</small></h4>
   </div>
 </template>
 
