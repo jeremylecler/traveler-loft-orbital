@@ -3,18 +3,21 @@
 <h2>Introduction:</h2>
 
 The briefing being quite free, I approached the project as the realization of a complete website:
-Reflection on demand and constraints
-Definition of the different functionalities of the site
-Search for graphic inspiration
-Creation of an identity (logo, choice of colors, typography)
-Creation of the different models of the pages taking into account the user experience
-API initialization
-Front development
-Animations of the different elements
-Responsive variation (portrait and landscape tablet, smartphone)
-Optimizations (code and assets)
-Test and corrections according to different browsers (Chrome, Safari, Firefox)
-Comment the code
+
+<ul>
+  <li>Reflection on demand and constraints</li>
+  <li>Definition of the different functionalities of the site</li>
+  <li>Search for graphic inspiration</li>
+  <li>Creation of an identity (logo, choice of colors, typography)</li>
+  <li>Creation of the different models of the pages taking into account the user experience</li>
+  <li>API initialization</li>
+  <li>Front development</li>
+  <li>Animations of the different elements</li>
+  <li>Responsive variation (portrait and landscape tablet, smartphone)</li>
+  <li>Optimizations (code and assets)</li>
+  <li>Test and corrections according to different browsers (Chrome, Safari, Firefox)</li>
+  <li>Comment the code</li>
+</ul>
 
 I worked on the project in the evening after my work.
 
@@ -35,14 +38,17 @@ I immediately studied the information that the API returned to me.
 Unfortunately the proposed API (Everbase) is no longer available. So I had to take the alternative of Trevorblades. The latter seems to have much less information, but Pierre Bertrand confirmed to me that there was no problem.
 
 <h3>Features:</h3>
-Search engine (search for a continent or a country)
-Interactive map to visualize the different continents and countries
-Country suggestions
-Exchange rate
-Translation of the site in multiple languages
-Filter countries and continents (by languages spoken for example)
-Comparison between two countries or continents
-Favorites system (create trip stops)
+
+<ul>
+  <li>Search engine (search for a continent or a country)</li>
+  <li>Interactive map to visualize the different continents and countries</li>
+  <li>Country suggestions</li>
+  <li>Exchange rate</li>
+  <li>Translation of the site in multiple languages</li>
+  <li>Filter countries and continents (by languages spoken for example)</li>
+  <li>Comparison between two countries or continents</li>
+  <li>Favorites system (create trip stops)</li>
+</ul>
 
 I had to make a choice in these features, to select the most relevant to achieve, to deliver the project on time.
 
@@ -124,15 +130,16 @@ The background cover image uses a custom library to create a parallax effect to 
 
 <h3>Continent sheet:</h3>
 When the continent panel opens, the API will look for information about it based on the slug :code.
-The internal scroll is managed by the perfect-scrollbar library. An event listens to the scroll to create a sticky effect on the header of the form (/src/mixins/panel.js).
+The internal scroll is managed by the perfect-scrollbar library. An event listens to the scroll to create a sticky effect on the header of the panel (/src/mixins/panel.js).
 The languages spoken are sorted by browsing the countries of the continent.
 When clicking on a CountryPush.vue push, the user enters the details of a country and the map zooms in on it.
 
 <h3>Country sheet:</h3>
-When the continent panel opens, the API will look for information about it based on the slug: highway code.
-The internal scroll is managed by the perfect-scrollbar library. An event listens to the scroll to create a sticky effect on the header of the form (/src/mixins/panel.js).
+When the continent panel opens, the API will look for information about it based on the slug :code.
+The internal scroll is managed by the perfect-scrollbar library. An event listens to the scroll to create a sticky effect on the header of the panel (/src/mixins/panel.js).
 The information regarding population, GDP and CO2 emissions is false. This is a choice on my part, as I wanted to show you the kind of information the user might have found if the Everbase API had worked.
 If the country has states, then these are displayed as a list.
+The user can also convert his money into another currency. This system is based on an external API (https://api.exchangeratesapi.io), on which I connect with Axios.
 The suggested countries are limited to 2 and sorted according to the other countries associated with the continent of the country.
 
 <h3>Search engine:</h3>
@@ -159,7 +166,7 @@ Once "ready" it $emits an event to the Loader to tell it that it can display the
 
 When the cursor passes over an element of the map, a tooltip, grouping together different information, appears and follows the movements.
 
-When clicking on an element, the map zooms on it while listening to the change of route of the router (function zoom()). I opted to use the route, because a user can arrive on the site directly on a details page, and the map must be able to zoom even without interaction.
+When clicking on an element, the map zooms on it while listening to the change of route of the router (function zoom(), change the slug :code). I opted to use the route, because a user can arrive on the site directly on a details page, and the map must be able to zoom even without interaction.
 
 
 <h2>Animations :</h2>
@@ -172,10 +179,13 @@ Each page has its transitionEnter() and transitionLeave() functions which manage
 <h2>Responsive :</h2>
 
 The responsive uses 4 breaking points:
-Iphone 5: $xsmall = 'screen and (max-width: 400px) and (max-height: 500px)'
-Iphone6: $small = 'screen and (max-width: 600px)'
-Tablette portrait: $medium = 'screen and (max-width: 960px)'
-Tablette paysage: $large = 'screen and (max-width: 1100px)'
+
+<ul>
+  <li>Iphone 5: $xsmall = 'screen and (max-width: 400px) and (max-height: 500px)'</li>
+  <li>Iphone6: $small = 'screen and (max-width: 600px)'</li>
+  <li>Tablet portrait: $medium = 'screen and (max-width: 960px)'</li>
+  <li>Tablet landscape: $large = 'screen and (max-width: 1100px)'</li>
+</ul>
 
 We had to make concessions on smartphone features.
 Due to the lack of space available on the screen and the touch screen, the map is less advanced.
@@ -200,3 +210,5 @@ I shared the site with different friends for them to test on several devices. If
 I really enjoyed doing this project for Loft Orbital.
 Development is most of the work, but I enjoyed thinking and building the Traveler site.
 In my opinion, for a production to be of quality, even as a developer, you have to put yourself in the user's shoes and understand their needs. And that's what I love to do.
+
+<i>Thanks for reading me</i>

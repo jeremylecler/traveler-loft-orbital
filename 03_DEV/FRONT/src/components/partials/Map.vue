@@ -187,14 +187,14 @@
         // Colorize the country on the map
         const last = this.countriesSerie.getPolygonById(code.toUpperCase())
         if(last)
-          last.fill = am4core.color("#FEA400")
+          last.isActive = true;
       },
       blurCountry(code)
       {
         // Decolorize the country on the map
         const last = this.countriesSerie.getPolygonById(code.toUpperCase())
         if(last)
-          last.fill = am4core.color("#ffffff")
+          last.isActive = false;
       },
       zoom()
       {
@@ -270,6 +270,9 @@
           let ss = this.countryTemplate.states.create("hover");
           ss.properties.fill = am4core.color("#FEA400");
           this.countryTemplate.cursorOverStyle = am4core.MouseCursorStyle.pointer;
+
+          let ff = this.countryTemplate.states.create("active");
+          ff.properties.fill = am4core.color("#FEA400");
 
           // Initialization of events
           this.countryTemplate.events.on("over", ev => {
@@ -528,7 +531,7 @@
     position absolute
     z-index 10
     width 90%
-    max-width 290px
+    max-width 310px
     pointer-events none
     border-radius 25px
     z-index 5
