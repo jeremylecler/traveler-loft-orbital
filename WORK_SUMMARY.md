@@ -2,7 +2,7 @@
 
 <h2>Introduction:</h2>
 
-The briefing being quite free, I approached the project as the realization of a complete website:
+The briefing being quite free, I approached the project as the implementation of a complete website:
 
 <ul>
   <li>Reflection on demand and constraints</li>
@@ -12,7 +12,7 @@ The briefing being quite free, I approached the project as the realization of a 
   <li>Creation of the different models of the pages taking into account the user experience</li>
   <li>API initialization</li>
   <li>Front development</li>
-  <li>Animations of the different elements</li>
+  <li>Animations of the various elements</li>
   <li>Responsive variation (portrait and landscape tablet, smartphone)</li>
   <li>Optimizations (code and assets)</li>
   <li>Test and corrections according to different browsers (Chrome, Safari, Firefox)</li>
@@ -25,9 +25,9 @@ I worked on the project in the evening after my work.
 <h2>Upgrading skills:</h2>
 
 I hadn't used GraphQL for a while. And I had never had the opportunity to use it with Vue.js.
-So I had to upgrading my skills and look for good practices.
+So I had to upgrade my skills and look for good practices.
 Apollo seemed to fit the needs, and a special version for Vue.js exists.
-Its use in my code can certainly be optimized and follow best practices, but it still works.
+Its use in my code can certainly be optimized and follow the best practices, but it still works.
 With more time, I intend to explore this point further.
 
 
@@ -47,7 +47,7 @@ Unfortunately the proposed API (Everbase) is no longer available. So I had to ta
   <li>Translation of the site in multiple languages</li>
   <li>Filter countries and continents (by languages spoken for example)</li>
   <li>Comparison between two countries or continents</li>
-  <li>Favorites system (create trip stops)</li>
+  <li>Favorites system (create stages of journey)</li>
 </ul>
 
 I had to make a choice in these features, to select the most relevant to achieve, to deliver the project on time.
@@ -71,11 +71,11 @@ Blue: #3993f6 Fresh, modern, reminiscent of the water that covers the Earth.
 Orange: #fea400 Dynamic, powerful, reminiscent of earth and sand.
 
 <h3>Logo:</h3>
-Icon with thin lines. Evokes the planet Earth in a rotating motion, inspiring speed and movement.
+Icon with thin lines. Evokes the planet Earth in a rotating motion, evoking speed and movement.
 
 <h3>Pages:</h3>
-I took the time to do some of the different pages. The goal was to have a clear vision of the end result and to be able to develop the free spirit.
-I used Sketch software, very suitable for creating web models. It allows to keep the logic "components".
+I took the time to do some of the different pages. The goal being to have a clear vision of the result and therefore to be able to develop with a care free mind.
+I used Sketch software, very suitable for creating web models. It allows to keep the "components" logic.
 
 <h4>> Home:</h4>
 I wanted the Home page to be an invitation to travel. It was essential to highlight the different continents of the world.
@@ -85,7 +85,7 @@ For that I opted for the use of a swiper which allows the display of the 7 conti
 I wanted to highlight these different parts of the world, to do this I used 2 photos (thank you Google) for each continent: a thumbnail photo and a cover photo.
 The user had to be able to access the different functionalities directly on this page:
 There is a button "Explore the World", allowing access to the map.
-The swiper cards allow access to specific continent.
+The swiper cards allow access to a specific continent.
 The search engine is accessible at the top right.
 The user can change the language.
 
@@ -105,7 +105,7 @@ Pushes invite the user to discover the different countries of the continent.
 <h2>Development:</h2>
 
 <h3>Connection with API:</h3>
-I first used Apollo to connect Vue.js to the GraphQL API. I tried to respect the best practices that I could find on the internet.
+I used Apollo for the first time to connect Vue.js to the GraphQL API. I tried to follow the best practices that I could find on the internet.
 The different calls are found in the "graphql.js" file (/src/config/graphql.js).
 
 <h3>Router and languages:</h3>
@@ -119,13 +119,13 @@ The different pages of the site are children of this new route.
 In the continent and country pages, the API is based on the slug :code to get the right information.
 
 <h3>Store:</h3>
-The store is little used in this version. I store information about the position of the cursor and the scroll in the page. This information is used to run different custom libraries allowing different effects (scrollParallax, mouseParallax, etc.)
+The store is barely used in this version. I store information about the position of the cursor and the scroll in the page. This information is used to run different custom libraries allowing different effects (scrollParallax, mouseParallax, etc.)
 
 <h3>Loader:</h3>
 The loader uses the Preloader.js library, allowing to preload the various assets of the site (images). It also listens to the initialization of the map which is done in the background. Once the images are loaded and the map ready, the site is accessible.
 
 <h3>Home:</h3>
-The home swiper uses the Swiper.js library. I used to work with her. It is efficient, easy to use and compatible with all browsers and touchscreen.
+The home swiper uses the Swiper.js library. I'm used to working with it. It is efficient, easy to use and compatible with all browsers and touchscreen.
 The background cover image uses a custom library to create a parallax effect to the movement of the mouse or the angle of the smartphone.
 
 <h3>Continent sheet:</h3>
