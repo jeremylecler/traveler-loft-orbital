@@ -179,6 +179,10 @@ export default {
     width 100vw
     padding-top 140px
 
+    @media $small
+
+      padding-top 0px
+
     &_wrapper
 
       padding-top 0px
