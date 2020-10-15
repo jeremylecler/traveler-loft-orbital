@@ -177,6 +177,7 @@ export default {
     margin-top auto
     margin-bottom 0px
     width 100vw
+    padding-top 140px
 
     &_wrapper
 
